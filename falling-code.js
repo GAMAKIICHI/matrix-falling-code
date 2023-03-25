@@ -7,11 +7,8 @@ class fallingCode
     constructor(element)
     {
         this.element = document.createElement(element);
-        setTimeout(this.setTextOnElement(this.generateText()), 5);
+        this.setTextOnElement(this.generateText(false));
         this.fallingAnimation();
-        
-        console.log(setTimeout(this.generateText(), 10));
-        
     }
 
     setTextOnElement(txt)
@@ -21,26 +18,31 @@ class fallingCode
 
     fallingAnimation()
     {
-        const speed = 20000;
-        const delay = 1000;
-
         anime({
             targets: this.element,
-            translateY: '200vh',
-            duration: (Math.random() * speed) + 10000,
+            translateY: '220vh',
+            duration: randomValues(2000, 6000),
             easing: 'linear',
             loop: true,
             autoplay: true   
         })
+
+        function randomValues(low, high)
+        {
+            return anime.random(low, high)
+        }
+        
     }
 
-    generateText()
+    generateText(lever)
     {
 
         const textData = "健康は大切です。医療の進歩により、現代では多くの病気が治療可能になっています。しかし、自由にアクティブに生活するためには、日々の生活習慣にも気を配る必要があります。適度な運動とバランスのとれた食生活が、健康を保つために欠かせない要素です。MJRXQXASFD1795$2578&@";
         let textContent = "";
 
-        for(let i = 0; i < (Math.random() * 20) + 15; i++)
+        const isLever = lever === true ? 15 : ((Math.random() * 25) + 20);
+
+        for(let i = 0; i < isLever; i++)
         {
             let randNum = (Math.random() * textData.length) + 1;
             textContent += textData.charAt(randNum);
@@ -49,14 +51,31 @@ class fallingCode
         return textContent;
     }
 
-    get Element()
-    {
-        return this.element;
+    shuffleText()
+    {   
+        const shuffle = () =>
+        {   
+            this.element.textContent = this.generateText(true);
+        }
+        setInterval(shuffle, 100);
     }
 }
 
-for(let i = 0; i < 60; i++)
+let textString = [];
+
+for(let i = 0; i < 80; i++)
 {
-    fallingCodeWrapper.appendChild(new fallingCode("div").element);
-    
+    let fcElement = new fallingCode("div");
+    fallingCodeWrapper.appendChild(fcElement.element);
+    textString.push(fcElement);
 }
+
+function test()
+{
+    for(let i = 0; i < textString.length; i++)
+    {
+        textString[i].shuffleText();
+    }
+}
+
+test();
