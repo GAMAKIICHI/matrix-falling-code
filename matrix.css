@@ -9,22 +9,27 @@ body
 #falling-code-wrapper
 {
     display: grid;
-    grid-template-columns: repeat(60,1fr);
+    grid-template-columns: repeat(80,1fr);
     justify-items: center;
     height: 100%;
     
-    background: black;
+    background: #020204;
     
 }
 
 #falling-code-wrapper div
 {
-    width: .5em;
+    
+    width: 1em;
     word-wrap: break-word;
     position: relative;
-    top: -100vh;
+    top: -120vh;
 
-    color: limegreen;
+    background: linear-gradient(to top, #09ff00, #01d301, #117701, #0d5c00);
+    font-weight: bolder;
+    
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 
     
 }
