@@ -12,8 +12,9 @@ body
     grid-template-columns: repeat(80,1fr);
     justify-items: center;
     height: 100%;
+    width: 100%;
     
-    background: #020204;
+    background-color: #020204;
     
 }
 
@@ -25,11 +26,9 @@ body
     position: relative;
     top: -120vh;
 
-    background: linear-gradient(to top, #09ff00, #01d301, #117701, #0d5c00);
+    background: linear-gradient(to top, #7bff00 10%, #09ff00 70%, #002b00af);
     font-weight: bolder;
     
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-
-    
 }

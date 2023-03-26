@@ -21,7 +21,8 @@ class fallingCode
         anime({
             targets: this.element,
             translateY: '220vh',
-            duration: randomValues(2000, 6000),
+            delay: randomValues(1000, 5000),
+            duration: 5000,
             easing: 'linear',
             loop: true,
             autoplay: true   
@@ -42,7 +43,7 @@ class fallingCode
 
         const isLever = lever === true ? 15 : ((Math.random() * 25) + 20);
 
-        for(let i = 0; i < isLever; i++)
+        for(let i = 0; i < 25; i++)
         {
             let randNum = (Math.random() * textData.length) + 1;
             textContent += textData.charAt(randNum);
@@ -70,7 +71,7 @@ for(let i = 0; i < 80; i++)
     textString.push(fcElement);
 }
 
-function test()
+function shuffleColumns()
 {
     for(let i = 0; i < textString.length; i++)
     {
@@ -78,4 +79,4 @@ function test()
     }
 }
 
-test();
+shuffleColumns();
